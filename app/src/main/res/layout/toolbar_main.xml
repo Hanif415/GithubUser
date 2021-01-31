@@ -17,6 +17,7 @@
         android:textStyle="bold" />
 
     <SearchView
+        android:id="@+id/search_view"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
