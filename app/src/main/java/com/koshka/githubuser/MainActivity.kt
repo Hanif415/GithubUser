@@ -1,6 +1,7 @@
 package com.koshka.githubuser
 
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -10,4 +11,5 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
     }
+
 }
