@@ -10,7 +10,8 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        app:elevation="0dp">
+        app:elevation="0dp"
+        android:layout_marginBottom="8dp">
 
         <include layout="@layout/toolbar_main" />
 
@@ -23,7 +24,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            tools:listitem="@layout/github_user_item"/>
     </androidx.core.widget.NestedScrollView>
 
 

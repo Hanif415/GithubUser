@@ -44,12 +44,14 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextChange(p0: String?): Boolean {
-        Toast.makeText(activity, p0, Toast.LENGTH_SHORT).show()
+
         return false
     }
 
     override fun onQueryTextSubmit(p0: String?): Boolean {
-        TODO("Not yet implemented")
+        Toast.makeText(activity, p0, Toast.LENGTH_SHORT).show()
+
+        return false
     }
 
 }
