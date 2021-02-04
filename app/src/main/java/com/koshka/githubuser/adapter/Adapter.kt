@@ -3,16 +3,21 @@ package com.koshka.githubuser.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.koshka.githubuser.R
-import com.koshka.githubuser.model.Users
+import com.koshka.githubuser.model.ItemsItem
 
-class Adapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
-    val onItemClickClickCallback : OnItemClickCallback? = null
+class Adapter(private val listUser: ArrayList<ItemsItem>) :
+    RecyclerView.Adapter<Adapter.ViewHolder>() {
+    val onItemClickClickCallback: OnItemClickCallback? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.github_user_item, parent)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.github_user_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -24,10 +29,14 @@ class Adapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapter<Ada
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(listUser: Users) {
+        private val tvName = itemView.findViewById<TextView>(R.id.tv_name)
+        private val cvAvatar = itemView.findViewById<ImageView>(R.id.img_avatar)
+        fun bind(user: ItemsItem) {
             with(itemView) {
+                tvName.text = user.login.toString()
+                Glide.with(this).load(user.avatarUrl).into(cvAvatar)
                 itemView.setOnClickListener {
-                    onItemClickClickCallback?.onItemClicked(listUser)
+                    onItemClickClickCallback?.onItemClicked(user)
                 }
             }
         }
@@ -35,5 +44,5 @@ class Adapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapter<Ada
 }
 
 interface OnItemClickCallback {
-    fun onItemClicked(user: Users)
+    fun onItemClicked(user: ItemsItem)
 }

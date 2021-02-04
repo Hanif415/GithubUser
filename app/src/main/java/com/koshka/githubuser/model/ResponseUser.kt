@@ -2,11 +2,24 @@ package com.koshka.githubuser.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
-
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Users(
+data class ResponseUser(
+
+	@field:SerializedName("total_count")
+	val totalCount: Int? = null,
+
+	@field:SerializedName("incomplete_results")
+	val incompleteResults: Boolean? = null,
+
+	@field:SerializedName("items")
+	val items: List<ItemsItem?>? = null
+) : Parcelable
+
+@Parcelize
+data class ItemsItem(
+
 	@field:SerializedName("gists_url")
 	val gistsUrl: String? = null,
 
