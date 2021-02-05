@@ -5,13 +5,16 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Url
 
 class ApiClient {
     companion object {
-        const val URL = "https://api.github.com/"
+        private const val BASE_URL = "https://api.github.com/"
+        const val SEARCH_URL = "search/users?q="
         fun getClient(): Retrofit {
             return Retrofit.Builder()
-                .baseUrl(URL)
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
@@ -21,6 +24,6 @@ class ApiClient {
 }
 
 interface ApiInterface {
-    @GET("search/users?q=sidiqpermana")
-    fun getUser(): Call<ResponseUser>
+    @GET
+    fun getUser(@Url url: String): Call<ResponseUser>
 }

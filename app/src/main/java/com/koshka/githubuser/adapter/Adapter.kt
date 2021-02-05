@@ -30,10 +30,12 @@ class Adapter(private val listUser: List<UsersItem?>) :
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvName = itemView.findViewById<TextView>(R.id.tv_name)
+        private val tvScore = itemView.findViewById<TextView>(R.id.tv_name2)
         private val cvAvatar = itemView.findViewById<ImageView>(R.id.img_avatar)
         fun bind(user: UsersItem?) {
             with(itemView) {
                 tvName.text = user?.login.toString()
+                tvScore.text = user?.score.toString()
                 Glide.with(this).load(user?.avatarUrl).into(cvAvatar)
                 itemView.setOnClickListener {
                     onItemClickClickCallback?.onItemClicked(user)

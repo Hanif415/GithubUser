@@ -13,7 +13,7 @@ class UserViewModel : ViewModel() {
     val listUser = MutableLiveData<List<UsersItem?>>()
 
     fun setUser(userName: String) {
-        ApiClient.getService().getUser().enqueue(object : retrofit2.Callback<ResponseUser> {
+        ApiClient.getService().getUser(ApiClient.SEARCH_URL + userName).enqueue(object : retrofit2.Callback<ResponseUser> {
             override fun onResponse(call: Call<ResponseUser>, response: Response<ResponseUser>) {
                 val user: List<UsersItem?> = response.body()?.items as List<UsersItem?>
                 listUser.postValue(user)
