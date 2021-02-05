@@ -15,6 +15,8 @@ class ApiClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
+
+        fun getService(): ApiInterface = getClient().create(ApiInterface::class.java)
     }
 }
 
